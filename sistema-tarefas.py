@@ -1,0 +1,31 @@
+# =========================================================
+# AV3-02/7: Sistema de Gestão de Tarefas e Prazos
+# =========================================================
+
+# 1. Entrada de Dados (Built-ins iniciais)
+qtd_tarefas = int(input("Quantas tarefas deseja cadastrar? "))
+lista_tarefas = []
+
+for i in range(qtd_tarefas):
+    nome = input(f"Digite a tarefa {i + 1}: ")
+    lista_tarefas.append(nome)
+
+# 2. Processamento com enumerate() e Tuplas
+banco_dados_tarefas = []
+
+for id_tarefa, nome_tarefa in enumerate(lista_tarefas, start=1):
+    # Lógica de prazo: progressão simples de 2 dias por tarefa (ex: 2, 4, 6, ...)
+    prazo_dias = id_tarefa * 2
+    status = "Pendente"
+    
+    # Armazenando a tupla na lista
+    registro = (id_tarefa, nome_tarefa, prazo_dias, status)
+    banco_dados_tarefas.append(registro)
+
+# 3. Saída de Dados e Desempacotamento de Tuplas
+print("\n--- RESUMO DO SISTEMA ---")
+
+for id_tarefa, nome_tarefa, prazo_dias, status in banco_dados_tarefas:
+    print(f"ID: {id_tarefa} | Tarefa: {nome_tarefa} | Prazo: {prazo_dias} dias | Status: {status}")
+
+print(f"\nTotal de tarefas gerenciadas: {len(banco_dados_tarefas)}")
