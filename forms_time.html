@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qual o seu Time do Coração?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        select {
+            padding: 2px;
+            font-size: 14px;
+            width: 150px;
+        }
+        button {
+            padding: 2px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Qual o seu Time do Coração?</h1>
+
+    <form id="timeForm" onsubmit="enviarFormulario(event)">
+        <div class="form-container">
+            <!-- Caixa de diálogo / Lista de itens cadastrados -->
+            <select id="timeSelect" size="4">
+                <option value="Botafogo" selected>Botafogo</option>
+                <option value="Flamengo">Flamengo</option>
+                <option value="Fluminense">Fluminense</option>
+                <option value="Vasco da Gama">Vasco da Gama</option>
+            </select>
+
+            <!-- Botões -->
+            <button type="submit">Enviar</button>
+            <button type="button" onclick="cancelarSelecao()">Cancelar</button>
+        </div>
+    </form>
+
+    <script>
+        function enviarFormulario(event) {
+            event.preventDefault(); // Impede o recarregamento da página
+            const timeSelecionado = document.getElementById('timeSelect').value;
+            alert('Você enviou: ' + timeSelecionado);
+        }
+
+        function cancelarSelecao() {
+            // Reseta a seleção para o primeiro item ou limpa
+            document.getElementById('timeSelect').selectedIndex = 0;
+            alert('Ação cancelada.');
+        }
+    </script>
+
+</body>
+</html>
